@@ -2,3 +2,4 @@ include ':tip_time_app'
 rootProject.name = "study_kotlin"
 include ':affirmations_app'
 include ':test_ocr'
+include ':wordsapp'
