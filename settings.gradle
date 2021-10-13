@@ -3,3 +3,4 @@ rootProject.name = "study_kotlin"
 include ':affirmations_app'
 include ':test_ocr'
 include ':wordsapp'
+include ':dessertclicker'
