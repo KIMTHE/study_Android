@@ -24,7 +24,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewTreeLifecycleOwner
 import com.example.android.unscramble.R
 import com.example.android.unscramble.databinding.GameFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -68,20 +67,6 @@ class GameFragment : Fragment() {
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
 
-        // set livedata observer
-
-        viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-            { newWord ->
-                binding.textViewUnscrambledWord.text = newWord
-            })
-        viewModel.score.observe(viewLifecycleOwner,
-            {newScore->
-                binding.score.text = getString(R.string.score,newScore)
-            })
-        viewModel.currentWordCount.observe(viewLifecycleOwner,
-            {newWordCount->
-                binding.wordCount.text = getString(R.string.word_count,newWordCount, MAX_NO_OF_WORDS)
-            })
     }
 
     override fun onDetach() {
@@ -122,14 +107,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    /*
-     * Gets a random word for the list of words and shuffles the letters in it.
-     */
-    private fun getNextScrambledWord(): String {
-        val tempWord = allWordsList.random().toCharArray()
-        tempWord.shuffle()
-        return String(tempWord)
-    }
 
     /*
      * Re-initializes the data in the ViewModel and updates the views with the new data, to

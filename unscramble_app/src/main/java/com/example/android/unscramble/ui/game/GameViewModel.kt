@@ -1,8 +1,12 @@
 package com.example.android.unscramble.ui.game
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.TtsSpan
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
@@ -12,7 +16,25 @@ class GameViewModel : ViewModel() {
     private val _currentWordCount = MutableLiveData(0)
     val currentWordCount: LiveData<Int> get() = _currentWordCount
     private val _currentScrambledWord = MutableLiveData<String>()
-    val currentScrambledWord: LiveData<String> get() = _currentScrambledWord
+    val currentScrambledWord: LiveData<Spannable> = Transformations.map(_currentScrambledWord){
+        /*
+        * 음성안내지원을 위해, 섞인 문자는 tts 로 한 철자씩 읽도록 spannable 타입을 이용하여
+        * 추가 정보를 세팅함*/
+        if(it == null){
+            SpannableString("")
+        }
+        else{
+            val scrambleWord = it.toString()
+            val spannable: Spannable = SpannableString(scrambleWord)
+            spannable.setSpan(
+                TtsSpan.VerbatimBuilder(scrambleWord).build(),
+                0,
+                scrambleWord.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+            spannable
+        }
+    }
 
     private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
