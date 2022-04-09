@@ -13,7 +13,7 @@
 </details>
 
 <details>
-<summary>[private] 프로그래머스 안드로이드 챌린지 과제 목록입니다.</summary>
+<summary>[private] 프로그래머스 안드로이드 챌린지 과제 레포지토리 목록입니다.</summary>
 
 - [K-MOOC 강좌정보 서비스](https://github.com/KIMTHE/K-MOOC-service)
 
