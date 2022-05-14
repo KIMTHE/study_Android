@@ -1,5 +1,7 @@
 # study_Android
 
+- [jetpack compose를 이용한 안드로이드 학습기록](https://github.com/KIMTHE/study-android-compose)
+
 <details>
 <summary>안드로이드 공식문서에서 제공하는 codelab 교육자료의 실습기록 입니다.</summary>
 
@@ -17,6 +19,6 @@
 
 - [K-MOOC 강좌정보 서비스](https://github.com/KIMTHE/K-MOOC-service)
 
-- [2022 와디즈 개발자 채용 챌린지](https://github.com/KIMTHE/Wadiz-challenge)
+- ~~[2022 와디즈 개발자 채용 챌린지](https://github.com/KIMTHE/Wadiz-challenge)~~
 
 </details>
